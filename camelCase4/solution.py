@@ -44,17 +44,12 @@ def split(name):
 
 def camelCase(s):
     operation = s[0]
-    t = s[2]
-    name = s[4:]
-    result = ''
 
     if operation == 'C':
-        result = combine(name, t)
+        print(combine(s[4:], s[2]))
 
     elif operation == 'S':
-        result = split(name)
-
-    print(result)
+        print(split(s[4:]))
 
 
 if __name__ == '__main__':
