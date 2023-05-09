@@ -11,6 +11,26 @@ import os
 #
 
 
+# def lonely_integer(arr):
+#     """return the lonely, unique interger in an array
+
+#     Args:
+#         arr (int[]): integer array
+
+#     Returns:
+#         int: lonely integer
+#     """
+#     int_dict = {}
+
+#     for item in arr:
+#         int_dict[item] = int_dict.get(item, 0) + 1
+
+#     for key, value in int_dict.items():
+#         if value == 1:
+#             return key
+
+#     return 0
+
 def lonely_integer(arr):
     """return the lonely, unique interger in an array
 
@@ -20,16 +40,12 @@ def lonely_integer(arr):
     Returns:
         int: lonely integer
     """
-    int_dict = {}
+    answer = 0
 
     for item in arr:
-        int_dict[item] = int_dict.get(item, 0) + 1
+        answer ^= item
 
-    for key, value in int_dict.items():
-        if value == 1:
-            return key
-
-    return 0
+    return answer
 
 
 if __name__ == '__main__':
