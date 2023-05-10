@@ -22,14 +22,8 @@ def grading_students(students_grades):
     Returns:
         int[]: updated grades
     """
-    updated_grades = []
-
-    for grade in students_grades:
-        new_grade = ((grade // 5) + 1) * \
-            5 if grade > 35 and grade % 5 >= 3 else grade
-        updated_grades.append(new_grade)
-
-    return updated_grades
+    return [((grade // 5) + 1) *
+            5 if grade > 35 and grade % 5 >= 3 else grade for grade in students_grades]
 
 
 if __name__ == '__main__':
