@@ -21,15 +21,8 @@ def diagonal_difference(square_matrix):
     Returns:
         int: difference of diagonals
     """
-    left_to_right_sum = 0
-    right_to_left_sum = 0
-    lenght = len(square_matrix)
-
-    for i, row in enumerate(square_matrix):
-        left_to_right_sum += row[i]
-        right_to_left_sum += row[lenght - i - 1]
-
-    return abs(left_to_right_sum - right_to_left_sum)
+    return abs(sum(row[i] - row[len(square_matrix) - i - 1] for i, row in
+                   enumerate(square_matrix)))
 
 
 if __name__ == '__main__':
