@@ -1,4 +1,6 @@
 #!/usr/local/bin/python3
+"""hackerrank divisible sum pairs solution
+    """
 
 import os
 
@@ -24,45 +26,54 @@ import os
 #     return result
 
 
-def divisibleSumPairs(n, k, ar):
+def divisible_sum_pairs(_, divisor, int_ar):
+    """divisible sum pairs
+
+    Args:
+        _ (int): number of elements in array; not used
+        divisor (int): number to divide sum pair by
+        int_ar (int[]): array of integers
+
+    Returns:
+        int: number of divisible sum pairs
+    """
     # O (n + k)
     remainder_store = {}
 
-    for i in range(0, k):
-        remainder_store[i] = 0
-
-    for number in ar:
-        remainder_store[number % k] += 1
+    for number in int_ar:
+        remainder_store[number % divisor] = remainder_store.get(
+            number % divisor, 0) + 1
 
     # multiples combine with one another
-    total_pairs = int(1/2 * remainder_store[0] * (remainder_store[0] - 1))
+    total_pairs = int(1/2 * remainder_store.get(0, 0)
+                      * (remainder_store.get(0, 0) - 1))
 
     # half the divisor combine with one another
-    if k % 2 == 0:
+    if divisor % 2 == 0:
         total_pairs += int(1/2 *
-                           remainder_store[k/2] * (remainder_store[k/2] - 1))
+                           remainder_store.get(divisor/2, 0) * (remainder_store.get(divisor/2, 0) - 1))
 
     # combine other numbers
-    for remainder in range(1, int((k + 1) / 2)):
-        total_pairs += remainder_store[remainder] * \
-            (remainder_store[k-remainder])
+    for remainder in range(1, int((divisor + 1) / 2)):
+        total_pairs += remainder_store.get(remainder, 0) * \
+            (remainder_store.get(divisor-remainder, 0))
 
     return total_pairs
 
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    with open(os.environ['OUTPUT_PATH'], 'w', encoding='utf-8') as fptr:
 
-    first_multiple_input = input().rstrip().split()
+        first_multiple_input = input().rstrip().split()
 
-    n = int(first_multiple_input[0])
+        n = int(first_multiple_input[0])
 
-    k = int(first_multiple_input[1])
+        k = int(first_multiple_input[1])
 
-    ar = list(map(int, input().rstrip().split()))
+        ar = list(map(int, input().rstrip().split()))
 
-    result = divisibleSumPairs(n, k, ar)
+        result = divisible_sum_pairs(n, k, ar)
 
-    fptr.write(str(result) + '\n')
+        fptr.write(str(result) + '\n')
 
-    fptr.close()
+        fptr.close()
