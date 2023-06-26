@@ -28,21 +28,27 @@ def kangaroo(x_1, v_1, x_2, v_2):
     Returns:
         string: "YES" if kangaroos can be at the same position, "NO" otherwise
     """
-    if v_1 == v_2 and x_1 != x_2:
+    # if v_1 == v_2 and x_1 != x_2:
+    #     return "NO"
+
+    # kangaroo_1 = x_1
+    # kangaroo_2 = x_2
+
+    # while kangaroo_1 != kangaroo_2:
+    #     if v_1 > v_2 and kangaroo_1 > kangaroo_2:
+    #         return "NO"
+    #     if v_2 > v_1 and kangaroo_2 > kangaroo_1:
+    #         return "NO"
+    #     kangaroo_1 += v_1
+    #     kangaroo_2 += v_2
+
+    # return "YES"
+
+    if v_2 > v_1:
         return "NO"
-
-    kangaroo_1 = x_1
-    kangaroo_2 = x_2
-
-    while kangaroo_1 != kangaroo_2:
-        if v_1 > v_2 and kangaroo_1 > kangaroo_2:
-            return "NO"
-        if v_2 > v_1 and kangaroo_2 > kangaroo_1:
-            return "NO"
-        kangaroo_1 += v_1
-        kangaroo_2 += v_2
-
-    return "YES"
+    if v_1 != v_2 and (x_2 - x_1) % (v_1 - v_2) == 0:
+        return "YES"
+    return "NO"
 
 
 if __name__ == '__main__':
