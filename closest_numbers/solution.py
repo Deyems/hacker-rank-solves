@@ -37,11 +37,11 @@ def closest_numbers(int_arr):
 
         if diff < min_diff:
             min_diff = diff
-            min_pairs = [(sorted_arr[i - 1], sorted_arr[i])]
+            min_pairs = [sorted_arr[i - 1], sorted_arr[i]]
         elif diff == min_diff:
-            min_pairs.append((sorted_arr[i - 1], sorted_arr[i]))
+            min_pairs.extend(sorted_arr[i - 1], sorted_arr[i])
 
-    return [elem for pair in min_pairs for elem in pair]
+    return min_pairs
 
 
 if __name__ == '__main__':
